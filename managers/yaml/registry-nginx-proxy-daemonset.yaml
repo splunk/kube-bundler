@@ -1,0 +1,34 @@
+---
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: registryproxy
+  namespace: default
+  labels:
+    registry-proxy: nginx
+spec:
+  selector:
+    matchLabels:
+      registry-proxy: nginx
+  template:
+    metadata:
+      labels:
+        registry-proxy: nginx
+    spec:
+      containers:
+        - name: nginx
+          image: nginx:1.22.0-alpine-11
+          imagePullPolicy: Never
+          ports:
+            - name: http
+              hostPort: __PORT__
+              containerPort: __PORT__
+              protocol: TCP
+          volumeMounts:
+            - name: nginx-config
+              mountPath: /etc/nginx/nginx.conf
+              subPath: nginx.conf
+      volumes:
+        - name: nginx-config
+          configMap:
+            name: reg-proxy-nginx-configmap

@@ -1,0 +1,163 @@
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  creationTimestamp: null
+  name: manager-role
+rules:
+- apiGroups:
+  - bundle.splunk.com
+  resources:
+  - applications
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - bundle.splunk.com
+  resources:
+  - applications/finalizers
+  verbs:
+  - update
+- apiGroups:
+  - bundle.splunk.com
+  resources:
+  - applications/status
+  verbs:
+  - get
+  - patch
+  - update
+- apiGroups:
+  - bundle.splunk.com
+  resources:
+  - flavors
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - bundle.splunk.com
+  resources:
+  - flavors/finalizers
+  verbs:
+  - update
+- apiGroups:
+  - bundle.splunk.com
+  resources:
+  - flavors/status
+  verbs:
+  - get
+  - patch
+  - update
+- apiGroups:
+  - bundle.splunk.com
+  resources:
+  - installs
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - bundle.splunk.com
+  resources:
+  - installs/finalizers
+  verbs:
+  - update
+- apiGroups:
+  - bundle.splunk.com
+  resources:
+  - installs/status
+  verbs:
+  - get
+  - patch
+  - update
+- apiGroups:
+  - bundle.splunk.com
+  resources:
+  - manifests
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - bundle.splunk.com
+  resources:
+  - manifests/finalizers
+  verbs:
+  - update
+- apiGroups:
+  - bundle.splunk.com
+  resources:
+  - manifests/status
+  verbs:
+  - get
+  - patch
+  - update
+- apiGroups:
+  - bundle.splunk.com
+  resources:
+  - registries
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - bundle.splunk.com
+  resources:
+  - registries/finalizers
+  verbs:
+  - update
+- apiGroups:
+  - bundle.splunk.com
+  resources:
+  - registries/status
+  verbs:
+  - get
+  - patch
+  - update
+- apiGroups:
+  - bundle.splunk.com
+  resources:
+  - sources
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - bundle.splunk.com
+  resources:
+  - sources/finalizers
+  verbs:
+  - update
+- apiGroups:
+  - bundle.splunk.com
+  resources:
+  - sources/status
+  verbs:
+  - get
+  - patch
+  - update

@@ -1,0 +1,63 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: registry-{{ .RegistryName }}
+  namespace: default
+  labels:
+    app: registry-{{ .RegistryName }}
+spec:
+  replicas: {{ .Replicas }}
+  strategy:
+    type: Recreate
+    rollingUpdate: null
+  selector:
+    matchLabels:
+      name: registry-{{ .RegistryName }}
+  template:
+    metadata:
+      labels:
+        name: registry-{{ .RegistryName }}
+        app: registry-{{ .RegistryName }}
+    spec:
+      nodeSelector:
+        {{ range $key, $value := .NodeSelector -}}
+        {{ $key }}: "{{ $value}}"
+        {{ end }}
+      tolerations:
+      # these tolerations are to have the deployment runnable on control plane nodes
+      # remove them if your control plane nodes should not run pods
+      - key: node-role.kubernetes.io/control-plane
+        operator: Exists
+        effect: NoSchedule
+      - key: node-role.kubernetes.io/master
+        operator: Exists
+        effect: NoSchedule
+      containers:
+      - name: registry
+        image: {{ .Image }}
+        resources:
+          limits:
+            memory: "0"
+            cpu: "0"
+          requests:
+            cpu: "0"
+            memory: "0"
+        readinessProbe:
+          exec:
+            command:
+            - test
+            - -d
+            - /var/lib/registry/docker
+        ports:
+        - containerPort: 5000
+          name: http
+        volumeMounts:
+        - name: registry
+          mountPath: /var/lib/registry
+      terminationGracePeriodSeconds: 30
+      enableServiceLinks: false
+      volumes:
+      - name: registry
+        hostPath:
+          path: {{ .HostPath}}/{{ .RegistryName }}

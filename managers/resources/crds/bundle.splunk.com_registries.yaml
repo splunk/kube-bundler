@@ -1,0 +1,72 @@
+---
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  annotations:
+    controller-gen.kubebuilder.io/version: v0.8.0
+  creationTimestamp: null
+  name: registries.bundle.splunk.com
+spec:
+  group: bundle.splunk.com
+  names:
+    kind: Registry
+    listKind: RegistryList
+    plural: registries
+    singular: registry
+  scope: Namespaced
+  versions:
+  - name: v1alpha1
+    schema:
+      openAPIV3Schema:
+        description: Registry is the Schema for the registries API
+        properties:
+          apiVersion:
+            description: 'APIVersion defines the versioned schema of this representation
+              of an object. Servers should convert recognized schemas to the latest
+              internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
+            type: string
+          kind:
+            description: 'Kind is a string value representing the REST resource this
+              object represents. Servers may infer this from the endpoint the client
+              submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
+            type: string
+          metadata:
+            type: object
+          spec:
+            description: RegistrySpec defines the desired state of Registry
+            properties:
+              flavor:
+                description: Flavor is the name of the flavor that will determine
+                  the number of replicas to deploy. If left empty, the flavor called
+                  "default" will be used.
+                type: string
+              hostPath:
+                description: HostPath is the path on the host used to store the registry
+                  contents. Defaults to /var/lib/registry/<registry-name>
+                type: string
+              image:
+                description: Image is the registry image reference
+                type: string
+              nodeSelector:
+                additionalProperties:
+                  type: string
+                description: NodeSelector contains the node labels to apply to this
+                  deployment
+                type: object
+            required:
+            - image
+            type: object
+          status:
+            description: RegistryStatus defines the observed state of Registry
+            type: object
+        type: object
+    served: true
+    storage: true
+    subresources:
+      status: {}
+status:
+  acceptedNames:
+    kind: ""
+    plural: ""
+  conditions: []
+  storedVersions: []

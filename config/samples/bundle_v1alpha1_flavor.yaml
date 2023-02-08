@@ -1,0 +1,6 @@
+apiVersion: bundle.splunk.com/v1alpha1
+kind: Flavor
+metadata:
+  name: flavor-sample
+spec:
+  # TODO(user): Add fields here

@@ -1,0 +1,12 @@
+apiVersion: bundle.splunk.com/v1alpha1
+kind: Flavor
+metadata:
+  name: default
+  namespace: default
+spec:
+  name: default
+  statefulQuorumReplicas: 1
+  statefulReplicationReplicas: 1
+  statelessReplicas: 1
+  antiAffinity: optional
+  minimumNodes: 1

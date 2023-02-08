@@ -1,0 +1,61 @@
+domain: splunk.com
+layout:
+- go.kubebuilder.io/v3
+projectName: bundler
+repo: github.com/splunk/kube-bundler
+resources:
+- api:
+    crdVersion: v1
+    namespaced: true
+  controller: true
+  domain: splunk.com
+  group: bundle
+  kind: Application
+  path: github.com/splunk/kube-bundler/api/v1alpha1
+  version: v1alpha1
+- api:
+    crdVersion: v1
+    namespaced: true
+  controller: true
+  domain: splunk.com
+  group: bundle
+  kind: Install
+  path: github.com/splunk/kube-bundler/api/v1alpha1
+  version: v1alpha1
+- api:
+    crdVersion: v1
+    namespaced: true
+  controller: true
+  domain: splunk.com
+  group: bundle
+  kind: Manifest
+  path: github.com/splunk/kube-bundler/api/v1alpha1
+  version: v1alpha1
+- api:
+    crdVersion: v1
+    namespaced: true
+  controller: true
+  domain: splunk.com
+  group: bundle
+  kind: Source
+  path: github.com/splunk/kube-bundler/api/v1alpha1
+  version: v1alpha1
+- api:
+    crdVersion: v1
+    namespaced: true
+  controller: true
+  domain: splunk.com
+  group: bundle
+  kind: Registry
+  path: github.com/splunk/kube-bundler/api/v1alpha1
+  version: v1alpha1
+- api:
+    crdVersion: v1
+    namespaced: true
+  controller: true
+  domain: splunk.com
+  group: bundle
+  kind: Flavor
+  path: github.com/splunk/kube-bundler/api/v1alpha1
+  version: v1alpha1
+version: "3"

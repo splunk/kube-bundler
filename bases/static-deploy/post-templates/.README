@@ -1,0 +1,2 @@
+The `post-manifests/` directory should be allowed to be inherited as-is from the base image, similar to
+with the `static-deploy` base image.

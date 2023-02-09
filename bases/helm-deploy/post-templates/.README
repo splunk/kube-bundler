@@ -1,0 +1,4 @@
+For any Helm-based app-bundle that also would like to deploy static YAML after the Helm apply (separate
+from the OSS Helm chart), just create a `post-templates/` directory and put any YAML in there.
+The `post-manifests/` directory should be allowed to be inherited as-is from the base image, similar to
+with the `static-deploy` base image.

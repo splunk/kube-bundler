@@ -1,0 +1,4 @@
+For any Helm-based app-bundle that also would like to deploy static YAML before the Helm apply (separate
+from the OSS Helm chart), just create a `pre-templates/` directory and put any YAML in there.
+The `pre-manifests/` directory should be allowed to be inherited as-is from the base image, similar to
+with the `static-deploy` base image.

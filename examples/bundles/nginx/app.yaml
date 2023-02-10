@@ -1,0 +1,32 @@
+apiVersion: bundle.splunk.com/v1alpha1
+kind: Application
+spec:
+  name: nginx
+  version: v0.0.1
+  dockerRegistry: docker.io
+  # TODO: replace deployImage with correct dockerhub repo
+  deployImage: docker.io/splunk/kube-bundler/nginx-deploy:latest-4
+  images:
+    - image: docker.io/nginxinc/nginx-unprivileged:latest
+  parameters:
+    - name: namespace
+      default: default
+      description: Namespace to deploy
+    - name: suffix
+      default:
+      description: Resource suffix for sandbox deployments
+    - name: replicas
+      default: "2"
+      description: Number of service replicas
+    - name: port
+      default: "8080"
+      description: Cluster-internal port to expose HTTP endpoint
+    - name: debug
+      default: "false"
+      description: Whether to enable debug output
+    - name: docker_tag
+      default: latest
+      description: Docker tag
+  resources:
+    - name: nginx
+      type: deployment

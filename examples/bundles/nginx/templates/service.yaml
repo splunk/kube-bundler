@@ -1,0 +1,11 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx${K8S_RESOURCE_SUFFIX}
+spec:
+  ports:
+    - port: ${K8S_PORT}
+      name: http
+  selector:
+    app: nginx${K8S_RESOURCE_SUFFIX}

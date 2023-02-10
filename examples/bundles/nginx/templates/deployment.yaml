@@ -1,0 +1,28 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx${K8S_RESOURCE_SUFFIX}
+spec:
+  selector:
+    matchLabels:
+      app: nginx${K8S_RESOURCE_SUFFIX}
+  replicas: ${K8S_REPLICAS}
+  template:
+    metadata:
+      labels:
+        app: nginx${K8S_RESOURCE_SUFFIX}
+    spec:
+      securityContext:
+        # 100 is the 'nginx' user and group
+        runAsNonRoot: true
+        runAsUser: 100
+        fsGroup: 100
+      containers:
+      - name: nginx
+        image: ${K8S_DOCKER_REGISTRY}/nginxinc/nginx-unprivileged:${K8S_DOCKER_TAG}
+        ports:
+        - containerPort: ${K8S_PORT}
+        env:
+        - name: NGINX_PORT
+          value: '${K8S_PORT}'

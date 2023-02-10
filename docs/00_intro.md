@@ -15,10 +15,10 @@ Sample operations:
 
 * Need more configuration details, including descriptions, default values, and what's changed? `kb describe install mybundle`
 
-* Need more replicas? `kb config set mybundle replicas=3 && kb deploy mybundle`
+* Need more replicas? `kb config set mybundle replicas=3 && kb deploy bundle mybundle`
 
 * Want to see the differences between the current and running configuration? `kb diff mybundle`
 
-* Want to smoketest the service `kb smoketest mybundle`
+* Want to smoketest the service? `kb smoketest mybundle`
 
 Learn more by [Getting Started](01_getting-started.md)

@@ -114,4 +114,4 @@ Once this process is complete, the resulting `.kb` file will have the entire app
 
 The bundle is ready to be installed with `kb install bundle`.
 
-Next up: [Deploying Complex Applications](03_deploy-complex-applications.md)
+Next up: [Deploying Complex Applications](03_deploying-complex-applications.md)

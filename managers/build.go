@@ -28,7 +28,6 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/splunk/kube-bundler/api/v1alpha1"
 	"github.com/docker/cli/cli/config"
 	cliTypes "github.com/docker/cli/cli/config/types"
 	"github.com/docker/docker/api/types"
@@ -38,6 +37,7 @@ import (
 	"github.com/docker/go-connections/nat"
 	"github.com/pkg/errors"
 	log "github.com/sirupsen/logrus"
+	"github.com/splunk/kube-bundler/api/v1alpha1"
 	"k8s.io/apimachinery/pkg/util/yaml"
 )
 
@@ -314,7 +314,7 @@ func (bm *BuildManager) launchLocalRegistry(ctx context.Context, image string) e
 }
 
 func (bm *BuildManager) stopLocalRegistry(ctx context.Context) error {
-	err := bm.c.ContainerStop(ctx, bm.registryContainerId, nil)
+	err := bm.c.ContainerStop(ctx, bm.registryContainerId, container.StopOptions{})
 	if err != nil {
 		return errors.Wrap(err, "couldn't stop local registry container")
 	}

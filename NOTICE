@@ -1,0 +1,28 @@
+kube-bundler
+Copyright 2023 Splunk Inc.
+
+This project bundles the following dependencies under the MIT license:
+
+- github.com/avast/retry-go
+- github.com/onsi/ginkgo
+- github.com/onsi/gomega
+- github.com/quipo/dependencysolver
+- github.com/sirupsen/logrus
+
+This project bundles the following dependencies under the Apache-2.0 license:
+
+- github.com/aws/aws-sdk-go
+- github.com/docker/cli
+- github.com/docker/docker
+- github.com/docker/go-connections
+- github.com/prometheus/client_golang
+- github.com/spf13/cobra
+- k8s.io/api
+- k8s.io/apiextensions-apiserver
+- k8s.io/apimachinery
+- k8s.io/client-go
+- sigs.k8s.io/controller-runtime
+
+This project bundles the following dependencies under the BSD-2-Clause license:
+
+- github.com/pkg/errors
